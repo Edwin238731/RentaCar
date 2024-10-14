@@ -73,6 +73,7 @@ WSGI_APPLICATION = 'RentaCar.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# prueba
 
 DATABASES = {
     "default": {
