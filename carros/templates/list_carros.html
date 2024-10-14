@@ -10,5 +10,35 @@
 </head>
 <body>
     <h1>Vista Carros</h1>
+
+<form action="">
+    <label for="marca">Marca:</label>
+    <select name="marca" id="marca">
+        <option value="toyota">Toyota</option>
+        <option value="honda">Honda</option>
+        <option value="ford">Ford</option>
+        <option value="nissan">Nissan</option>
+    </select>
+
+    <label for="modelo">Modelo:</label>
+    <select name="modelo" id="modelo">
+        <option value="corolla">Corolla</option>
+        <option value="civic">Civic</option>
+        <option value="focus">Focus</option>
+        <option value="altima">Altima</option>
+    </select>
+
+    <label for="anio">Año:</label>
+    <input type="date" name="anio" id="anio" placeholder="Ingrese el año">
+
+    <label for="precio_por_dia">Precio por día:</label>
+    <input type="text" name="precio_por_dia" id="precio_por_dia" placeholder="Ingrese el precio por día" maxlength="10" pattern="\d{1,10}">
+
+    <label for="disponible">Disponible:</label>
+    <input type="text" name="disponible" id="disponible" placeholder="Ingrese la disponibilidad">
+
+    <button type="submit">Guardar</button>
+</form>
+
 </body>
 </html>
