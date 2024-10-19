@@ -5,5 +5,5 @@ urlpatterns = [
     path('', list_carros),
     path('clientes/', clientes),
     path('reservaciones/', reservaciones),
-    path('new/', form_1,name='form_1')
+    path('alta/', form_1,name='form_1')
 ]
