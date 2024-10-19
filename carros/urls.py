@@ -3,7 +3,7 @@ from .views import list_carros, form_1, clientes, reservaciones
 
 urlpatterns = [
     path('', list_carros),
-    path('', clientes),
-    path('', reservaciones),
+    path('clientes/', clientes),
+    path('reservaciones/', reservaciones),
     path('new/', form_1,name='form_1')
 ]

@@ -13,7 +13,9 @@ def reservaciones(request):
 
 def form_1(request):
     auto = Auto (marca=request.POST['marca'],modelo=request.POST['modelo'],
-          anio=request.POST['anio'], precio_por_dia=request.POST['precio_por_dia'],
-          disponible=request.POST['disponible'])
+    anio=request.POST['anio'], precio_por_dia=request.POST['precio_por_dia'],
+    disponible=request.POST['disponible'])
     auto.save()
     return redirect('/carros/')
+
+
