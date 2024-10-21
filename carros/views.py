@@ -3,7 +3,8 @@ from .models import Auto
 
 # Create your views here.
 def list_carros(request):
-    return render(request, 'list_carros.html')
+    autos = Auto.objects.all()  # Consulta todos los autos
+    return render(request, 'list_carros.html', {'autos': autos})
 
 def clientes(request):
     return render(request, 'clientes.html')
@@ -17,5 +18,7 @@ def form_1(request):
     disponible=request.POST['disponible'])
     auto.save()
     return redirect('/carros/')
+
+
 
 

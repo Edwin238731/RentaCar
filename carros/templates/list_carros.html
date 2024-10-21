@@ -35,10 +35,38 @@
     <label for="precio_por_dia">Precio por día:</label>
     <input type="text" name="precio_por_dia" placeholder="Ingrese el precio por día" maxlength="10" pattern="^\d{1,10}(\.\d{1,2})?$">
 
+    <label for="matricula">Matricula:</label>
+    <input type="text" name="matricula" placeholder="Ingrese la matricula del vehiculo" maxlength="8" >
+
     <label for="disponible">Disponible:</label>
     <input type="number" name="disponible" placeholder="Ingrese la disponibilidad" min="1" required>
 
     <button>Guardar</button>
+
+     <table border="1">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Precio por Día</th>
+                <th>Matricula</th>
+                <th>Disponible</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for auto in autos %}
+            <tr>
+                <td>{{ auto.marca }}</td>
+                <td>{{ auto.modelo }}</td>
+                <td>{{ auto.anio }}</td>
+                <td>{{ auto.precio_por_dia }}</td>
+                <td>{{ auto.matricula}}</td>
+                <td>{{ auto.disponible }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </form>
 
 </body>
