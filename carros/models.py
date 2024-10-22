@@ -7,19 +7,19 @@ class Auto(models.Model):
     anio = models.IntegerField()
     precio_por_dia = models.DecimalField(max_digits=10, decimal_places=2)
     disponible = models.IntegerField(default=0)
-    estado = models.IntegerField(max_length=5, default='3')
+    estado = models.CharField(max_length=5, default='3')
 
-class clientes(models.Model):
-    Nombre = models.CharField()
+class Clientes(models.Model):
+    nombre = models.CharField()
     apellidos = models.CharField()
-    Direcion = models.CharField()
-    telefono = models.CharField()
-    No_licencia = models.CharField()
+    direccion = models.CharField()
+    telefono = models.CharField(max_length=8, default='0000')
+    no_licencia = models.CharField(max_length=10, default='0000')
     
-class reservaciones(models.Model):
-    matricula = models.CharField()
-    clientes = models.CharField()
-    salida = models.CharField()
-    entradas = models.CharField()
+class Reservaciones(models.Model):
+    matricula = models.ForeignKey(Auto, on_delete=models.CASCADE,default='0000')
+    cliente = models.ForeignKey(Clientes, on_delete=models.CASCADE,default='1')
+    salida = models.DateField()  # Cambiar a DateField o DateTimeField según necesidad
+    entrada = models.DateField(null=True, blank=True)
     
     

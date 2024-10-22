@@ -9,6 +9,13 @@
     <title>Document</title>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a href="{% url 'list_carros' %}">Carros</a></li>
+        <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
+        <li><a href="{% url 'lista_reservaciones' %}">Reservaciones</a></li>
+    </ul>
+</nav>
     <h1>Vista Carros</h1>
 
 <form action="{% url 'form_1' %}" method="POST">
@@ -41,6 +48,8 @@
     <label for="disponible">Disponible:</label>
     <input type="number" name="disponible" placeholder="Ingrese la disponibilidad" min="1" required>
 
+    <label for="estado">Estado:</label>
+    <input type="number" name="estado" placeholder="nivel del estado max 10">
     <button>Guardar</button>
 
     <div class="tabla">
@@ -66,7 +75,7 @@
                 <td>{{ auto.precio_por_dia }}</td>
                 <td>{{ auto.matricula}}</td>
                 <td>{{ auto.disponible }}</td>
-                <td>{{ autoestado }}</td>
+                <td>{{ auto.estado }}</td>
                             <td>
                 <!-- Botón desplegable -->
                 <div class="dropdown">
@@ -76,10 +85,10 @@
                         <a href="{% url 'modificar_auto' auto.id %}">Modificar</a>
                         
                         <!-- Opción Reservar, se pasa el ID y la matricula -->
-                        <a href="{% url 'reservar_auto' auto.id auto.matricula %}">Reservar</a>
+                        <a href="{% url 'reservar_auto' auto.id %}">Reservar</a>
                         
                         <!-- Opción Ver, se pasa el ID y la matricula -->
-                        <a href="{% url 'ver_auto' auto.id auto.matricula %}">Ver</a>
+                        <a href="{% url 'ver_auto' auto.id %}">Ver</a>
                     </div>
                 </div>
             </td>

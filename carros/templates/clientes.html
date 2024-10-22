@@ -7,10 +7,35 @@
     <title>Document</title>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a href="{% url 'list_carros' %}">Carros</a></li>
+        <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
+        <li><a href="{% url 'lista_reservaciones' %}">Reservaciones</a></li>
+    </ul>
+</nav>
     <h1>Clientes</h1>
-    <h2>Clientes</h2>
-    <div>
-        
+    <form action="{% url 'form_2' %}" method="POST">
+    {% csrf_token %}
+    
+    <label for="Nombre">Nombre:</label>
+    <input type="text" name="Nombre" placeholder="Ingresa tu nombre" required>
+    
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" name="apellidos" placeholder="Ingresa tus apellidos" required>
+    
+    <label for="direccion">Dirección:</label>
+    <input type="text" name="direccion" placeholder="Ingresa tu dirección" required>
+    
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" name="telefono" placeholder="Ingresa tu teléfono" required>
+    
+    <label for="no_licencia">Número de licencia:</label>
+    <input type="text" name="no_licencia" placeholder="Ingresa tu número de licencia" required>
+    
+    <button type="submit">Guardar</button>
+</form>
+
     </div>
 
 </body>
