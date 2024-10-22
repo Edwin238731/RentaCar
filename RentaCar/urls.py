@@ -22,5 +22,7 @@ urlpatterns = [
     path('carros/', include('carros.urls')),
     path('clientes/', include('carros.urls')),
     path('reservaciones/', include('carros.urls')),
+    path('ver/', include('carros.urls')),
+    path('modificar/', include('carros.urls')),
 
 ]

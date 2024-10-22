@@ -7,6 +7,7 @@ class Auto(models.Model):
     anio = models.IntegerField()
     precio_por_dia = models.DecimalField(max_digits=10, decimal_places=2)
     disponible = models.IntegerField(default=0)
+    estado = models.IntegerField(max_length=5, default='3')
 
 class clientes(models.Model):
     Nombre = models.CharField()

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Auto
 
 # Create your views here.
@@ -11,6 +11,19 @@ def clientes(request):
 
 def reservaciones(request):
     return render(request, 'reservaciones.html')
+
+def modificar(request, id):
+    auto = get_object_or_404(Auto, id=id)
+    return render(request, 'modificar.html', {'auto': auto})
+
+def reservaciones(request, id, matricula):
+    auto = get_object_or_404(Auto, id=id)
+    return render(request, 'reservaciones.html', {'auto': auto})
+
+def ver(request, id, matricula):
+    auto = get_object_or_404(Auto, id=id)
+    return render(request, 'ver.html', {'auto': auto})
+
 
 def form_1(request):
     auto = Auto (marca=request.POST['marca'],modelo=request.POST['modelo'],

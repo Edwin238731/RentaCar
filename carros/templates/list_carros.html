@@ -23,10 +23,10 @@
 
     <label for="modelo">Modelo:</label>
     <select name="modelo">
-        <option value="corolla">Corolla</option>
-        <option value="civic">Civic</option>
-        <option value="focus">Focus</option>
-        <option value="altima">Altima</option>
+        <option value="Corolla">Corolla</option>
+        <option value="Civic">Civic</option>
+        <option value="Focus">Focus</option>
+        <option value="Altima">Altima</option>
     </select>
 
     <label for="anio">Año:</label>
@@ -43,7 +43,8 @@
 
     <button>Guardar</button>
 
-     <table border="1">
+    <div class="tabla">
+        <table border="1">
         <thead>
             <tr>
                 <th>Marca</th>
@@ -52,6 +53,8 @@
                 <th>Precio por Día</th>
                 <th>Matricula</th>
                 <th>Disponible</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -63,10 +66,29 @@
                 <td>{{ auto.precio_por_dia }}</td>
                 <td>{{ auto.matricula}}</td>
                 <td>{{ auto.disponible }}</td>
+                <td>{{ autoestado }}</td>
+                            <td>
+                <!-- Botón desplegable -->
+                <div class="dropdown">
+                    <button class="dropbtn">Acciones</button>
+                    <div class="dropdown-content">
+                        <!-- Opción Modificar -->
+                        <a href="{% url 'modificar_auto' auto.id %}">Modificar</a>
+                        
+                        <!-- Opción Reservar, se pasa el ID y la matricula -->
+                        <a href="{% url 'reservar_auto' auto.id auto.matricula %}">Reservar</a>
+                        
+                        <!-- Opción Ver, se pasa el ID y la matricula -->
+                        <a href="{% url 'ver_auto' auto.id auto.matricula %}">Ver</a>
+                    </div>
+                </div>
+            </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    </div>
+
 </form>
 
 </body>
