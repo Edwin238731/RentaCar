@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import list_carros, form_1, form_clientes, lista_clientes, lista_reservaciones, modificar, ver,reservar_auto
+from .views import list_carros, lista_clientes, lista_reservaciones, modificar, ver,reservar_auto
 
 urlpatterns = [
     #hojas de html
@@ -11,6 +11,6 @@ urlpatterns = [
     path('modificar/<int:id>/', modificar, name='modificar_auto'),
     path('ver/<int:id>/', ver, name='ver_auto'),
     #formularios
-    path('alta_clientes/',form_clientes, name= 'form_2'),
-    path('alta_vehiculo/', form_1,name='form_1'),
+    path('clientes/alta/',lista_clientes, name= 'form_2'),
+    path('vehiculo/alta/', list_carros,name='form_1'),
 ]
