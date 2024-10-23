@@ -11,6 +11,6 @@ urlpatterns = [
     path('modificar/<int:id>/', modificar, name='modificar_auto'),
     path('ver/<int:id>/', ver, name='ver_auto'),
     #formularios
-    path('altaclientes/',form_clientes, name= 'form_2'),
+    path('alta_clientes/',form_clientes, name= 'form_2'),
     path('alta_vehiculo/', form_1,name='form_1'),
 ]

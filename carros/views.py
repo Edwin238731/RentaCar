@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Auto, Clientes, Reservaciones
+from django.db import IntegrityError
 
 # Create your views here.
 def list_carros(request):
@@ -36,16 +37,30 @@ def form_1(request):
     disponible=request.POST['disponible'],
     estado=request.POST['estado'])
     auto.save()
-    return redirect('/carros/')
+    return redirect('/autos/')
 
 def form_clientes(request):
-    cliente = Clientes (Nombre=request.POST['Nombre'],
-    apellidos=request.POST['apellidos'],
-    direcion=request.POST['direccion'],
-    telefono=request.POST['telefono'],
-    no_licencia=request.POST['no_licencia'])
-    cliente.save()
-    return redirect('/clientes/')
+    error_message = None
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        apellidos = request.POST.get('apellidos')
+        direccion = request.POST.get('direccion')
+        telefono = request.POST.get('telefono')
+        no_licencia = request.POST.get('no_licencia')
+
+        try:
+            Clientes.objects.create(
+                nombre=nombre,
+                apellidos=apellidos,
+                direccion=direccion,
+                telefono=telefono,
+                no_licencia=no_licencia
+            )
+            return redirect('lista_clientes')
+
+        except IntegrityError:
+            error_message = 'La licencia ya está registrada. Por favor, ingrese una licencia única.'
+    return render(request, 'clientes.html', {'error': error_message})
 
 
 
