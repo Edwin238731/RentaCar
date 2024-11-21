@@ -1,18 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Auto, Clientes, Reservaciones
+from .models import reservacion
+from carros.clientesApp.models import Clientes
+from carros.Autos.models import Auto
 from django.db import IntegrityError
 
-# Create your views here.
-# def list_carros(request):
-#     autos = Auto.objects.all()  # Consulta todos los autos
-#     return render(request, 'list_carros.html', {'autos': autos})
-
-# def lista_clientes(request):
-#     clientes_list = Clientes.objects.all()  # Consulta todos los clientes
-#     return render(request, 'clientes.html', {'clientes': clientes_list})
-
 def lista_reservaciones(request):# Consulta todas las reservaciones
-    reservaciones_list = Reservaciones.objects.all()
+    reservaciones_list = reservacion.objects.all()
     return render(request, 'reservaciones.html', {'reservaciones': reservaciones_list})
 
 def modificar(request, id):
@@ -91,7 +84,3 @@ def lista_clientes(request):
         'clientes': clientes,
         'error': error_message,
     })
-
-
-
-

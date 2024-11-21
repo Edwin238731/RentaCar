@@ -3,7 +3,6 @@ from .views import list_carros, lista_clientes, lista_reservaciones, modificar, 
 
 urlpatterns = [
     #hojas de html
-    path('', list_carros, name='list_carros'),
     path('clientes/', lista_clientes, name='lista_clientes'),
     path('reservaciones/',lista_reservaciones, name= 'lista_reservaciones'),
     #botones de acciones
@@ -13,4 +12,5 @@ urlpatterns = [
     #formularios
     path('clientes/alta/',lista_clientes, name= 'form_2'),
     path('vehiculo/alta/', list_carros,name='form_1'),
+    path('', list_carros, name='list_carros'),
 ]
