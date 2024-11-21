@@ -12,5 +12,6 @@ urlpatterns = [
     #formularios
     path('clientes/alta/',lista_clientes, name= 'form_2'),
     path('vehiculo/alta/', list_carros,name='form_1'),
+    path('actualizar/<int:id>/', modificar,name='modificar'),
     path('', list_carros, name='list_carros'),
 ]

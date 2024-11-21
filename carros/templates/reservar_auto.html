@@ -16,9 +16,62 @@
 </nav>
     <h1>Reservaci&oacute;n</h1>
     <h2>Reservaci&oacute;n del veh&iacute;culo</h2>
-    <div>
-        
-    </div>
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Precio por Día</th>
+                <th>Matricula</th>
+                <th>Disponible</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ auto.marca }}</td>
+                <td>{{ auto.modelo }}</td>
+                <td>{{ auto.anio }}</td>
+                <td>{{ auto.precio_por_dia }}</td>
+                <td>{{ auto.matricula}}</td>
+                <td>{{ auto.disponible }}</td>
+                <td>{{ auto.estado }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Formulario para guardar información del auto -->
+<form action="{% url 'reservar_auto' auto.id %}" method="POST">
+    {% csrf_token %}
+    <label for="disponible">Disponible:</label>
+    <input type="number" name="disponible" value="{{ auto.disponible }}" min="1" required>
+    <button>Guardar</button>
+</form>
+
+<!-- Formulario para buscar cliente -->
+<h3>Buscar Cliente</h3>
+<form method="GET" action="{% url 'reservar_auto' auto.id %}">
+    <input type="text" name="cliente" placeholder="Número de Licencia" value="{{ termino }}">
+    <button type="submit">Buscar</button>
+</form>
+
+<hr>
+
+{% if resultados %}
+    <h3>Datos del Cliente</h3>
+    <ul>
+        <li><strong>Nombre:</strong> {{ Clientes.nombre }}</li>
+        <li><strong>Apellidos:</strong> {{ Clientes.apellidos }}</li>
+        <li><strong>Dirección:</strong> {{ Clientes.direccion }}</li>
+        <li><strong>Teléfono:</strong> {{ Clientes.telefono }}</li>
+        <li><strong>No. Licencia:</strong> {{ Clientes.no_licencia }}</li>
+    </ul>
+{% elif termino %}
+    <p>No se encontraron resultados para "{{ termino }}".</p>
+{% endif %}
 
 </body>
 </html>

@@ -9,7 +9,7 @@ def lista_reservaciones(request):# Consulta todas las reservaciones
     return render(request, 'reservaciones.html', {'reservaciones': reservaciones_list})
 
 def modificar(request, id):
-    auto = get_object_or_404(Auto, id=id)
+    auto = Auto.objects.filter(id=id).first()
     return render(request, 'modificar.html', {'auto': auto})
 
 def reservar_auto(request, id):#formulario para reservaciones

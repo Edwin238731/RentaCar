@@ -8,14 +8,6 @@ def lista_reservaciones(request):# Consulta todas las reservaciones
     reservaciones_list = reservacion.objects.all()
     return render(request, 'reservaciones.html', {'reservaciones': reservaciones_list})
 
-def modificar(request, id):
-    auto = get_object_or_404(Auto, id=id)
-    return render(request, 'modificar.html', {'auto': auto})
-
-def reservar_auto(request, id):#formulario para reservaciones
-    auto = get_object_or_404(Auto, id=id)
-    return render(request, 'reservar_auto.html', {'auto': auto})
-
 def ver(request, id):
     auto = get_object_or_404(Auto, id=id)
     return render(request, 'ver.html', {'auto': auto})
@@ -84,3 +76,21 @@ def lista_clientes(request):
         'clientes': clientes,
         'error': error_message,
     })
+    
+
+def reservar_auto(request, id):
+    # Obtener la información del auto por ID
+    auto = get_object_or_404(Auto, id=id)
+    
+    # Lógica para buscar clientes
+    termino = request.GET.get('cliente', '')  # Captura el término de búsqueda
+    resultados = None
+    if termino:
+        resultados = Clientes.objects.filter(no_licencia__icontains=termino)# Búsqueda por número de licencia
+
+    context = {
+        'auto': auto,
+        'termino': termino,
+        'resultados': resultados.first() if resultados else None,  # Solo un cliente
+    }
+    return render(request, 'reservar_auto.html', context)

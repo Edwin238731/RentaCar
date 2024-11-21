@@ -14,11 +14,44 @@
         <li><a href="{% url 'lista_reservaciones' %}">Reservaciones</a></li>
     </ul>
 </nav>
-    <h1>Modificar elementos</h1>
-    <h2>Modificar informacion del vehiculo</h2>
-    <div>
-        
-    </div>
+<h1>Modificar elementos</h1>
+<h2>Modificar informacion</h2>
+
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ auto.marca }}</td>
+                <td>{{ auto.modelo }}</td>
+                <td>{{ auto.anio }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <form action="{% url 'modificar' auto.id %}" method="POST">
+    {% csrf_token %}
+    <label for="precio_por_dia">Precio por día:</label>
+    <input type="text" name="precio_por_dia" value= "{{auto.precio_por_dia}}" maxlength="10" pattern="^\d{1,10}(\.\d{1,2})?$">
+
+    <label for="matricula">Matricula:</label>
+    <input type="text" name="matricula" value= "{{auto.matricula}}" maxlength="8" >
+
+    <label for="disponible">Disponible:</label>
+    <input type="number" name="disponible" value= "{{auto.disponible}}" min="1" required>
+
+    <label for="estado">Estado:</label>
+    <input type="number" name="estado" value= "{{auto.estado}}">
+    <button>Guardar</button>
+    </form>
+    
+</div>
 
 </body>
 </html>

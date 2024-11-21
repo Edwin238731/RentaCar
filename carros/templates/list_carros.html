@@ -26,10 +26,10 @@
     {% csrf_token %}
     <label for="marca">Marca:</label>
     <select name="marca">
-        <option value="toyota">Toyota</option>
-        <option value="honda">Honda</option>
-        <option value="ford">Ford</option>
-        <option value="nissan">Nissan</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Honda">Honda</option>
+        <option value="Ford">Ford</option>
+        <option value="Nissan">Nissan</option>
     </select>
 
     <label for="modelo">Modelo:</label>
@@ -55,9 +55,9 @@
     <label for="estado">Estado:</label>
     <input type="number" name="estado" placeholder="nivel del estado max 10">
     <button>Guardar</button>
-
-    <div class="tabla">
-        <table border="1">
+</form>
+<div class="tabla">
+    <table border="1">
         <thead>
             <tr>
                 <th>Marca</th>
@@ -81,28 +81,26 @@
                 <td>{{ auto.disponible }}</td>
                 <td>{{ auto.estado }}</td>
                 <td>
-                <!-- Botón desplegable -->
-                <div class="dropdown">
-                    <button class="dropbtn">Acciones</button>
-                    <div class="dropdown-content">
-                        <!-- Opción Modificar -->
-                        <a href="{% url 'modificar_auto' auto.id %}">Modificar</a>
-                        
-                        <!-- Opción Reservar, se pasa el ID y la matricula -->
-                        <a href="{% url 'reservar_auto' auto.id %}">Reservar</a>
-                        
-                        <!-- Opción Ver, se pasa el ID y la matricula -->
-                        <a href="{% url 'ver_auto' auto.id %}">Ver</a>
+                    <!-- Botón desplegable -->
+                    <div class="dropdown">
+                        <button class="dropbtn">Acciones</button>
+                        <div class="dropdown-content">
+                            <!-- Opción Modificar -->
+                            <a href="{% url 'modificar_auto' auto.id %}">Modificar</a>
+                            
+                            <!-- Opción Reservar, se pasa el ID y la matricula -->
+                            <a href="{% url 'reservar_auto' auto.id %}">Reservar</a>
+                            
+                            <!-- Opción Ver, se pasa el ID y la matricula
+                            <a href="{% url 'ver_auto' auto.id %}">Ver</a>-->
+                        </div>
                     </div>
-                </div>
-            </td>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    </div>
-
-</form>
+</div>
 
 </body>
 </html>

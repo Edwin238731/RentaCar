@@ -8,10 +8,6 @@ def lista_reservaciones(request):# Consulta todas las reservaciones
     reservaciones_list = reservacion.objects.all()
     return render(request, 'reservaciones.html', {'reservaciones': reservaciones_list})
 
-def modificar(request, id):
-    auto = get_object_or_404(Auto, id=id)
-    return render(request, 'modificar.html', {'auto': auto})
-
 def reservar_auto(request, id):#formulario para reservaciones
     auto = get_object_or_404(Auto, id=id)
     return render(request, 'reservar_auto.html', {'auto': auto})
@@ -84,3 +80,15 @@ def lista_clientes(request):
         'clientes': clientes,
         'error': error_message,
     })
+    
+def modificar(request, id):
+    auto = get_object_or_404(Auto, id=id)
+    if request.method == 'POST':
+        auto.precio_por_dia = request.POST['precio_por_dia']
+        auto.matricula = request.POST['matricula']
+        auto.disponible = request.POST['disponible']
+        auto.estado = request.POST['estado']
+        auto.save()
+        return redirect('list_carros')  # Redirige después de guardar
+
+    return render(request, 'list_carros.html', {'auto': auto})
