@@ -6,3 +6,6 @@ class Clientes(models.Model):
     direccion = models.CharField()
     telefono = models.CharField(max_length=10, default='0000')
     no_licencia = models.CharField(max_length=10, default='0000', unique=True)
+    
+    def __str__(self):
+        return self.title

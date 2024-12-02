@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
     <title>Clientes</title>
 </head>
 <body>
@@ -12,6 +13,7 @@
         <li><a href="{% url 'list_carros' %}">Carros</a></li>
         <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
         <li><a href="{% url 'lista_reservaciones' %}">Reservaciones</a></li>
+        <li><a href="{% url 'Clientes-list' %}">API</a></li>
     </ul>
 </nav>
     <h1>Clientes</h1>
@@ -61,6 +63,17 @@
                     <td>{{ cliente.direccion }}</td>
                     <td>{{ cliente.telefono }}</td>
                     <td>{{ cliente.no_licencia }}</td>
+                    <td>
+                        <!-- Botón desplegable -->
+                        <div class="dropdown">
+                            <button class="dropbtn">Acciones</button>
+                            <div class="dropdown-content">
+                                
+                                <!-- Opción Ver, se pasa el ID y la matricula-->
+                                <a href="{% url 'Clientes-detail' cliente.id %}">API</a>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

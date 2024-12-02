@@ -3,6 +3,8 @@ from .models import Clientes
 from carros.reservaciones.models import reservacion
 from carros.Autos.models import Auto
 from django.db import IntegrityError
+from rest_framework import generics
+from .serializer import ClientesSerializer
 
 def lista_reservaciones(request):# Consulta todas las reservaciones
     reservaciones_list = reservacion.objects.all()
@@ -85,6 +87,13 @@ def lista_clientes(request):
         'error': error_message,
     })
 
+class ClientesListCreateView(generics.ListCreateAPIView):
+    queryset = Clientes.objects.all()
+    serializer_class = ClientesSerializer
+
+class ClientesDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Clientes.objects.all()
+    serializer_class = ClientesSerializer
 
 
 
