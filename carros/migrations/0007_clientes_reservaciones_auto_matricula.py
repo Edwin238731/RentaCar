@@ -11,24 +11,23 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='clientes',
+            name='Clientes',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('Nombre', models.CharField()),
-                ('apellidos', models.CharField()),
-                ('Direcion', models.CharField()),
-                ('telefono', models.CharField()),
-                ('No_licencia', models.CharField()),
+                ('Nombre', models.CharField(max_length=50)),
+                ('apellidos', models.CharField(max_length=50)),
+                ('Direcion', models.CharField(max_length=100)),
+                ('telefono', models.CharField(max_length=15)),
+                ('No_licencia', models.CharField(max_length=20, unique=True)),
             ],
         ),
         migrations.CreateModel(
-            name='reservaciones',
+            name='Reservaciones',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('matricula', models.CharField()),
-                ('clientes', models.CharField()),
-                ('salida', models.CharField()),
-                ('entradas', models.CharField()),
+                ('matricula', models.CharField(max_length=10)),
+                ('clientes', models.ForeignKey(on_delete=models.CASCADE, to='carros.Clientes')),
+                ('entradas', models.DateTimeField()),
             ],
         ),
         migrations.AddField(
@@ -37,3 +36,4 @@ class Migration(migrations.Migration):
             field=models.CharField(default='0000', max_length=8),
         ),
     ]
+

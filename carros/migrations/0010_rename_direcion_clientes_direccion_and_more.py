@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='reservaciones',
-            name='salida',
+            name='entrada',
             field=models.DateField(),
         ),
         migrations.AddField(
